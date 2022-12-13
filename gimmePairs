@@ -1,0 +1,20 @@
+#arguments: list of names to be sorted, integer size of group
+def gimmePairs(names, number):
+ 
+  import random
+  random.shuffle(names)
+
+  maxClean= max([i for i in range (len(names)+1) if i%number==0])
+  pairs=[[] for i in range (int(maxClean/number))]
+  
+  index=0
+  for i in range (len(pairs)):
+    pairs[i]+=names[index:index+number]
+    index+=number
+    
+  if maxClean!=number:
+    leftover=names[maxClean:]  
+    for i in range (len(leftover)):
+      pairs[i]+=[leftover[i]]
+  
+  return (pairs)
